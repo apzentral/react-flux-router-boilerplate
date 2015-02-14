@@ -1,0 +1,29 @@
+{
+  "camelcase": true,
+  "immed": true,
+  "indent": 2,
+  "latedef": true,
+  "newcap": true,
+  "quotmark": "single",
+  "esnext": true,
+  "globalstrict": true,
+  "browser": true,
+  "node": true,
+  "globals": {
+    "require": false,
+    "__dirname": false,
+    "__DEV__": false,
+    "__SERVER__": false
+  },
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "noarg": true,
+  "regexp": true,
+  "undef": true,
+  "unused": true,
+  "strict": true,
+  "trailing": true,
+  "smarttabs": true,
+  "white": true
+}
