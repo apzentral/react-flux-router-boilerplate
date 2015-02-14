@@ -16,9 +16,6 @@ var AppDispatcher = require('./dispatcher/AppDispatcher');
 var ActionTypes = require('./constants/ActionTypes');
 var AppConfig = require('./config.js');
 
-// Pages
-var IndexPage = React.createFactory(require('./pages/Index'));
-
 // Export React so the dev tools can find it
 (window !== window.top ? window.top : window).React = React;
 
@@ -26,8 +23,10 @@ var IndexPage = React.createFactory(require('./pages/Index'));
  * Check if Page component has a layout property; and if yes, wrap the page
  * into the specified layout, then mount to container in config file.
  */
-function render(page) {
-  var child, props = {};
+function render(uri, page) {
+  var child, props = {
+    uri: uri
+  };
   var obj = page();
   while (obj.props && obj.props.layout) {
     child = page(props, child);
@@ -42,12 +41,18 @@ function render(page) {
 var routes = {
   // Main Route
   '/': function() {
-    render(IndexPage);
+    var page = React.createFactory(require('./pages/Index'));
+    render(router.getRoute(), page);
+  },
+  '/libraries': function() {
+    var page = React.createFactory(require('./pages/Libraries'));
+    render(router.getRoute(), page);
   }
 };
 
 // Initialize a router
-var router = new Router(routes).configure({
+var router = new Router(routes);
+router.configure({
   html5history: false
 }).init('/');
 

@@ -1,10 +1,18 @@
-# react-flux-router-boilerplate
+# React Flux with Router Boilerplate
+
+[react-flux-router-boilerplate](https://github.com/apzentral/react-flux-router-boilerplate)
 A boilerplate for a full Flux, React and Router development.
 
 ### Based On
 
 - [https://github.com/kriasoft/react-starter-kit](https://github.com/kriasoft/react-starter-kit)
 - [https://github.com/alduro/generator-flux-webapp](https://github.com/alduro/generator-flux-webapp)
+
+### Architecture
+
+[Flux](facebook.github.io/flux/) for unidirectional data flow.
+
+<img src="https://github.com/facebook/flux/raw/master/docs/img/flux-diagram-white-background.png" style="width: 100%;" />
 
 ### Directory Layout
 
@@ -44,6 +52,10 @@ $ gulp build                    # `gulp build --watch`, or `gulp build --release
 ```shell
 $ gulp                          # or, `gulp --release`
 ```
+
+### Debug
+
+Simply add `--verbose` when running `gulp` command
 
 ### Support
 

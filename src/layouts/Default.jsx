@@ -14,7 +14,9 @@ var DefaultLayout = React.createClass({
   render() {
     return (
       <div className="row">
-        {Navbar()}
+        {Navbar({
+          uri: this.props.uri
+        })}
         {this.props.children}
       </div>
     );

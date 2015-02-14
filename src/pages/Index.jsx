@@ -14,14 +14,14 @@ var HomePage = React.createClass({
     };
   },
   render: function() {
-    return (<div>
+    return (
       <div className="page-header">
         <h1>React, Flux with Router Boilerplate</h1>
         <p className="lead">
           Basic starting point for develop web application with React and Flux.
         </p>
       </div>
-    </div>);
+    );
   }
 });
 
