@@ -53,14 +53,30 @@ gulp.task('default', ['serve']);
 // Clean up
 gulp.task('clean', del.bind(null, [DEST]));
 
-// 3rd party libraries
-gulp.task('vendor', function() {
-  return merge(
-    gulp.src('./node_modules/jquery/dist/**')
-    .pipe(gulp.dest(DEST + '/vendor/jquery-' + pkgs.jquery)),
-    gulp.src('./node_modules/bootstrap/dist/fonts/**')
-    .pipe(gulp.dest(DEST + '/fonts'))
-  );
+// HTML pages
+gulp.task('pages', function() {
+  src.pages = ['src/pages/**/*.jsx'];
+  var render = $.render({
+      template: './src/pages/_template.html'
+    })
+    .on('error', function(err) {
+      console.log(err);
+      render.end();
+    });
+  return gulp.src(src.pages)
+    .pipe($.changed(DEST, {
+      extension: '.html'
+    }))
+    .pipe($.if('*.jsx', render))
+    .pipe($.if(RELEASE, $.htmlmin({
+      removeComments: true,
+      collapseWhitespace: true,
+      minifyJS: true
+    }), $.jsbeautifier()))
+    .pipe(gulp.dest(DEST))
+    .pipe($.size({
+      title: 'pages'
+    }));
 });
 
 // Bundle
@@ -93,7 +109,7 @@ gulp.task('bundle', function(cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['vendor', 'bundle'], cb);
+  runSequence(['pages', 'bundle'], cb);
 });
 
 // Launch a lightweight HTTP Server
@@ -127,6 +143,7 @@ gulp.task('serve', function(cb) {
       }
     });
 
+    gulp.watch(src.pages, ['pages']);
     gulp.watch(DEST + '/**/*.*', function(file) {
       browserSync.reload(path.relative(__dirname, file.path));
     });

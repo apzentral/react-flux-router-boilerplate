@@ -7,7 +7,7 @@
 var CFG = {
 
   // Paint Area for this application
-  container: document.body
+  container: document.getElementById('app')
 
 };
 

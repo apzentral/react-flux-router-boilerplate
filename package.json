@@ -49,8 +49,10 @@
     "jshint": "^2.6.0",
     "jshint-loader": "^0.8.2",
     "jshint-stylish": "^1.0.0",
+    "jsx-loader": "^0.11.2",
     "less": "^2.4.0",
     "less-loader": "^2.0.0",
+    "merge-stream": "^0.1.6",
     "minimist": "^1.1.0",
     "protractor": "^1.6.1",
     "psi": "^1.0.5",
@@ -63,15 +65,14 @@
   },
   "jest": {
     "rootDir": "./src",
-    "scriptPreprocessor": "../preprocessor.js",
+    "scriptPreprocessor": "../config/preprocessor.js",
     "unmockedModulePathPatterns": [
       "react"
     ]
   },
   "scripts": {
     "start": "gulp",
-    "test": "jshint && jest",
-    "jshint": "jshint ./src gulpfile.js",
+    "test": "jest",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update"
   }

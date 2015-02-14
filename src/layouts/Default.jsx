@@ -1,17 +1,20 @@
 /**
- * Default Layout
+ * @jsx React.DOM
  */
-
 'use strict';
 
 var React = require('react');
-var Navbar = require('../components/Navbar');
+var Navbar = React.createFactory(require('../components/Navbar'));
 
 var DefaultLayout = React.createClass({
+  displayName: 'Default.jsx',
+  getDefaultProps() {
+    return {};
+  },
   render() {
     return (
-      <div>
-        <Navbar />
+      <div className="row">
+        {Navbar()}
         {this.props.children}
       </div>
     );

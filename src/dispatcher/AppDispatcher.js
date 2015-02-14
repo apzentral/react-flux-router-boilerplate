@@ -5,10 +5,10 @@
 
 'use strict';
 
-var Dispatcher = require('flux');
-var copyProperties = require('react/lib/copyProperties');
+var Flux = require('flux');
+var assign = require('react/lib/Object.assign');
 
-var AppDispatcher = copyProperties(new Dispatcher(), {
+var AppDispatcher = assign(new Flux.Dispatcher(), {
 
   /**
    * @param {object} action The details of the action, including the action's

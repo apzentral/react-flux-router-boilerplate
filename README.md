@@ -22,16 +22,29 @@ A boilerplate for a full Flux, React and Router development.
 │   ├── /pages/                 # Top-level, URL-bound React components
 │   ├── /stores/                # Stores contain the application state and logic
 │   ├── /app.js                 # The application's bootstrap file, entry point
+│   ├── /config.js              # The application's config file
 │── gulpfile.js                 # Configuration file for automated builds
 └── package.json                # The list of 3rd party libraries and utilities
 ```
 
 ### Getting Started
 
-Clone or fork this project.
+1. Clone or fork this project.
+2. Then run this command `$ npm install`
+3. Run `$ gulp`
 
 ### How to Build
 
 ```shell
-$ gulp build                    # or, `gulp build --release`
+$ gulp build                    # `gulp build --watch`, or `gulp build --release`
 ```
+
+### How to Run
+
+```shell
+$ gulp                          # or, `gulp --release`
+```
+
+### Support
+
+Have any feedback, feature request or anything? Please let me know.

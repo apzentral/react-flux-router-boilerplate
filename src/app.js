@@ -8,37 +8,42 @@
 'use strict';
 
 var React = require('react');
-var copyProperties = require('react/lib/copyProperties');
-var Router = require('director');
+var assign = require('react/lib/Object.assign');
+var {
+  Router
+} = require('director');
 var AppDispatcher = require('./dispatcher/AppDispatcher');
 var ActionTypes = require('./constants/ActionTypes');
-var AppConfig = require('./config');
+var AppConfig = require('./config.js');
+
+// Pages
+var IndexPage = React.createFactory(require('./pages/Index'));
 
 // Export React so the dev tools can find it
 (window !== window.top ? window.top : window).React = React;
 
 /**
  * Check if Page component has a layout property; and if yes, wrap the page
- * into the specified layout, then mount to document.body.
+ * into the specified layout, then mount to container in config file.
  */
 function render(page) {
   var child, props = {};
-  while (page.defaultProps.layout) {
+  var obj = page();
+  while (obj.props && obj.props.layout) {
     child = page(props, child);
-    copyProperties(props, page.defaultProps);
-    page = page.defaultProps.layout;
+    props = assign(props, obj.props);
+    obj = obj.props.layout;
   }
-  React.renderComponent(page(props, child), document.body);
-  document.title = props.title;
+  React.render(obj(props, child), AppConfig.container);
 }
 
 // Define URL routes
 // See https://github.com/flatiron/director
 var routes = {
   // Main Route
-  '/': () => render(
-    require('./pages/Index');
-  )
+  '/': function() {
+    render(IndexPage);
+  }
 };
 
 // Initialize a router
