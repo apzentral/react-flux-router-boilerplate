@@ -12,7 +12,7 @@ A boilerplate for a full React, Flux and Router application development.
 
 [Flux](facebook.github.io/flux/) for unidirectional data flow.
 
-<img src="//github.com/facebook/flux/raw/master/docs/img/flux-diagram-white-background.png" style="width: 100%;" />
+<img src="https://github.com/facebook/flux/raw/master/docs/img/flux-diagram-white-background.png" style="width: 100%;" />
 
 ### Directory Layout
 

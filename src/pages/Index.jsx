@@ -24,7 +24,7 @@ var HomePage = React.createClass({
         </div>
 
         <p>We are using <a href="http://facebook.github.io/flux/" target="_blank">Flux</a> as a unidirectional data flow.</p>
-        <img src="//github.com/facebook/flux/raw/master/docs/img/flux-diagram-white-background.png" style={{width:'100%'}}/>
+        <img src="https://github.com/facebook/flux/raw/master/docs/img/flux-diagram-white-background.png" style={{width:'100%'}}/>
 
         <hr/>
 
