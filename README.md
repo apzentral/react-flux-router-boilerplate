@@ -1,7 +1,7 @@
-# React Flux with Router Boilerplate
+# React, Flux with Router Boilerplate
 
 [react-flux-router-boilerplate](https://github.com/apzentral/react-flux-router-boilerplate)
-A boilerplate for a full Flux, React and Router development.
+A boilerplate for a full React, Flux and Router application development.
 
 ### Based On
 
