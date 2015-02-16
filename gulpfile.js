@@ -53,6 +53,24 @@ gulp.task('default', ['serve']);
 // Clean up
 gulp.task('clean', del.bind(null, [DEST]));
 
+// Assets
+gulp.task('assets', function() {
+  src.assets = ['src/assets/**'];
+  // Out Put Location
+  var out = DEST + '/assets';
+
+  // Compile Scss
+  return gulp.src(src.assets)
+    .pipe($.changed(out, {
+      extension: '.css'
+    }))
+    .pipe($.if('*.scss', $.sass()))
+    .pipe(gulp.dest(out))
+    .pipe($.size({
+      title: 'assets'
+    }));
+});
+
 // HTML pages
 gulp.task('pages', function() {
   src.pages = ['src/pages/**/*.html'];
@@ -101,7 +119,21 @@ gulp.task('bundle', function(cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['pages', 'bundle'], cb);
+  runSequence(['assets', 'pages', 'bundle'], function() {
+    // If watch flag is set
+    if (watch) {
+      gulp.watch(src.assets, ['assets']);
+      gulp.watch(src.pages, ['pages']);
+      gulp.watch(DEST + '/**/*.*', function(file) {
+        if (file.path.match(/[\.css]$/ig)) {
+          // Skip these extensions
+          return;
+        }
+        runSequence('bundle');
+      });
+    }
+    cb();
+  });
 });
 
 // Launch a lightweight HTTP Server
@@ -135,6 +167,7 @@ gulp.task('serve', function(cb) {
       }
     });
 
+    gulp.watch(src.assets, ['assets']);
     gulp.watch(src.pages, ['pages']);
     gulp.watch(DEST + '/**/*.*', function(file) {
       browserSync.reload(path.relative(__dirname, file.path));

@@ -16,6 +16,13 @@ var AppDispatcher = assign(new Flux.Dispatcher(), {
    */
   handleViewAction: function(action) {
     this.dispatch(action);
+  },
+
+  /**
+   * ToDo Handler
+   */
+  handleToDoAction: function(action) {
+    this.dispatch(action);
   }
 
 });

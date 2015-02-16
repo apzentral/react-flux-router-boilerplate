@@ -12,7 +12,7 @@ A boilerplate for a full Flux, React and Router development.
 
 [Flux](facebook.github.io/flux/) for unidirectional data flow.
 
-<img src="https://github.com/facebook/flux/raw/master/docs/img/flux-diagram-white-background.png" style="width: 100%;" />
+<img src="//github.com/facebook/flux/raw/master/docs/img/flux-diagram-white-background.png" style="width: 100%;" />
 
 ### Directory Layout
 
@@ -23,12 +23,14 @@ A boilerplate for a full Flux, React and Router development.
 ├── /node_modules/              # 3rd-party libraries and utilities
 ├── /src/                       # The source code of the application
 │   ├── /actions/               # Action creators that allow to trigger a dispatch to stores
+│   ├── /assets/                # All assets files
 │   ├── /components/            # React components. E.g. Navbar.jsx, Calendar.jsx
 │   ├── /constants/             # Enumerations used in action creators and stores
 │   ├── /dispatcher/            # Dispatcher
 │   ├── /layouts/               # Shared layouts for top-level components
 │   ├── /pages/                 # Top-level, URL-bound React components
 │   ├── /stores/                # Stores contain the application state and logic
+│   ├── /utilities/             # Utilities such as libraries or common tools
 │   ├── /app.js                 # The application's bootstrap file, entry point
 │   ├── /config.js              # The application's config file
 │── gulpfile.js                 # Configuration file for automated builds

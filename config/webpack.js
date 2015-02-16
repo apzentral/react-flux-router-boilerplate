@@ -64,6 +64,9 @@ module.exports = function(release) {
         test: /\.less$/,
         loader: 'style!css!less'
       }, {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      }, {
         test: /\.gif/,
         loader: 'url-loader?limit=10000&mimetype=image/gif'
       }, {

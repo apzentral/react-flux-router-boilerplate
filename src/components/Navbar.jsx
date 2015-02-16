@@ -9,13 +9,15 @@ var React = require('react');
 var Link = React.createFactory(require('./Link'));
 
 var Navbar = React.createClass({
+
   displayName: _name,
+
   render() {
     return (
       <nav className="navbar navbar-inverse">
         {Link({
           style: {
-            'marginRight': '30px'
+            marginRight: '30px'
           },
           className: 'navbar-brand',
           to: '/'
@@ -30,6 +32,11 @@ var Navbar = React.createClass({
             {Link({
               to: '/libraries'
             }, 'Libraries')}
+          </li>
+          <li className={this._checkUri('todo')}>
+            {Link({
+              to: '/todo'
+            }, 'To Do')}
           </li>
         </ul>
       </nav>

@@ -9,9 +9,7 @@
 
 var React = require('react');
 var assign = require('react/lib/Object.assign');
-var {
-  Router
-} = require('director');
+var {Router} = require('director');
 var AppDispatcher = require('./dispatcher/AppDispatcher');
 var ActionTypes = require('./constants/ActionTypes');
 var AppConfig = require('./config.js');
@@ -33,12 +31,16 @@ function render(uri, page) {
     props = assign(props, obj.props);
     obj = obj.props.layout;
   }
+  if (!obj || typeof obj !== 'function') {
+    throw 'Did you set "layout" in "props" for "' + uri + '" route?';
+  }
   React.render(obj(props, child), AppConfig.container);
 }
 
+// Initialize a router
 // Define URL routes
 // See https://github.com/flatiron/director
-var routes = {
+var router = new Router({
   // Main Route
   '/': function() {
     var page = React.createFactory(require('./pages/Index'));
@@ -47,11 +49,12 @@ var routes = {
   '/libraries': function() {
     var page = React.createFactory(require('./pages/Libraries'));
     render(router.getRoute(), page);
+  },
+  '/todo': function() {
+    var page = React.createFactory(require('./pages/ToDo'));
+    render(router.getRoute(), page);
   }
-};
-
-// Initialize a router
-var router = new Router(routes);
+});
 router.configure({
   html5history: false
 }).init('/');
