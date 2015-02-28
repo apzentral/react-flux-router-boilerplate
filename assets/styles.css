@@ -1,0 +1,18 @@
+/**
+ * App Styles
+ */
+.todo-container {
+  margin: 20px auto;
+  padding: 10px 30px; }
+
+.todo-element {
+  margin: 10px auto; }
+  .todo-element:hover {
+    cursor: pointer; }
+  .todo-element input[type="checkbox"] {
+    margin-right: 10px; }
+  .todo-element small {
+    margin-left: 10px; }
+
+.done {
+  text-decoration: line-through; }
