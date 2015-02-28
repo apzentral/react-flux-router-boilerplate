@@ -3,6 +3,8 @@
 [react-flux-router-boilerplate](https://github.com/apzentral/react-flux-router-boilerplate)
 A boilerplate for a full React, Flux and Router application development.
 
+[working demo](http://apzentral.github.io/react-flux-router-boilerplate)
+
 ### Based On
 
 - [https://github.com/kriasoft/react-starter-kit](https://github.com/kriasoft/react-starter-kit)
