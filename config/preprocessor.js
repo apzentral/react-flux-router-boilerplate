@@ -1,7 +1,7 @@
 'use strict';
 
-var to5 = require('6to5-core');
 var ReactTools = require('react-tools');
+var babel = require("babel-core");
 
 module.exports = {
   process: function(src, filename) {
