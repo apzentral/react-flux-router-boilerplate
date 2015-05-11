@@ -11,16 +11,21 @@ module.exports = {
         harmony: true
       });
     }
-    // Ignore files other than .js, .es, .jsx or .es6
-    if (!to5.canCompile(filename)) {
-      return '';
-    }
+    // Allow the stage to be configured by an environment
+    // variable, but use Babel's default stage (2) if
+    // no environment variable is specified.
+    var stage = process.env.BABEL_JEST_STAGE || 2;
+
     // Ignore all files within node_modules
-    if (filename.indexOf('node_modules') === -1) {
-      return to5.transform(src, {
-        filename: filename
+    // babel files can be .js, .es, .jsx or .es6
+    if (filename.indexOf("node_modules") === -1 && babel.canCompile(filename)) {
+      return babel.transform(src, {
+        filename: filename,
+        stage: stage,
+        retainLines: true
       }).code;
     }
+
     return src;
   }
 };

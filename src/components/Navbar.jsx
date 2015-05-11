@@ -36,7 +36,7 @@ var Navbar = React.createClass({
           <li className={this._checkUri('todo')}>
             {Link({
               to: '/todo'
-            }, 'To Do')}
+            }, 'To Do Application')}
           </li>
         </ul>
       </nav>
