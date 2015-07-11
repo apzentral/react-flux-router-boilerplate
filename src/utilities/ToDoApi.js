@@ -4,7 +4,7 @@
 'use strict';
 var DEBUG = false;
 var _name = 'ToDoApi.js';
-var ToDoActions = require('../actions/ToDoActions');
+var ToDoResponseActions = require('../actions/ToDoResponseActions');
 var ToDoData = require('./ToDoData');
 
 module.exports = {
@@ -17,15 +17,24 @@ module.exports = {
       console.log('[*] ' + _name + ':initToDoData --- ');
       console.log(data);
     }
-    ToDoActions.receiveToDo(data);
+    ToDoResponseActions.receiveToDo(data);
   },
 
   toggleCompleteById: function(id) {
-    ToDoActions.toggleComplete(id);
+    var todos = JSON.parse(localStorage.getItem('todo'));
+    todos.forEach(function(todo) {
+      if (todo.id === id) todo.complete = !todo.complete;
+      return todo;
+    });
+    localStorage.setItem('todo', JSON.stringify(todos));
+    ToDoResponseActions.toggleComplete(id);
   },
 
   addNewToDo: function(data) {
-    ToDoActions.addToDo(data);
+    var todos = JSON.parse(localStorage.getItem('todo'));
+    todos.push(data);
+    localStorage.setItem('todo', JSON.stringify(todos));
+    ToDoResponseActions.addToDo(data);
   }
 
 };

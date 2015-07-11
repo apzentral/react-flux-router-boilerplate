@@ -20,7 +20,8 @@ var initTodoDataJson = JSON.stringify([{
 module.exports = {
   // Load Mock ToDo Data Into localStorage
   init: function() {
-    localStorage.clear();
-    localStorage.setItem('todo', initTodoDataJson);
+    if (!localStorage.getItem('todo')) {
+      localStorage.setItem('todo', initTodoDataJson);
+    }
   }
 };

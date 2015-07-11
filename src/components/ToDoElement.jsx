@@ -5,7 +5,7 @@
 
 var DEBUG = false;
 var _name = 'ToDoElement.jsx';
-var ToDoApi = require('../utilities/ToDoApi');
+var ToDoRequestActions = require('../actions/ToDoRequestActions');
 var moment = require('moment');
 
 var React = require('react');
@@ -47,7 +47,7 @@ var ToDoElement = React.createClass({
     if (DEBUG) {
       console.log('[*] ' + _name + ':_toggleComplete ---');
     }
-    ToDoApi.toggleCompleteById(this.props.data.id);
+    ToDoRequestActions.toggleComplete(this.props.data.id);
     this.setState({
       date: getCurrentDate()
     });

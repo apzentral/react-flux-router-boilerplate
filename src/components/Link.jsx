@@ -16,14 +16,16 @@ var Link = React.createClass({
   },
 
   render() {
-    this.props.href = this.props.to && this.props.to.lastIndexOf('/', 0) === 0 ?
+    var props = {};
+    for (var key in this.props) {
+      props[key] = this.props[key];
+    }
+    props.href = this.props.to && this.props.to.lastIndexOf('/', 0) === 0 ?
       this.props.to :
       '/' + this.props.to;
 
     // Adding Events
-    var props = assign(this.props, {
-      onClick: this.handleClick
-    });
+    props.onClick = this.handleClick;
 
     return React.createElement('a', props, this.props.children);
   },

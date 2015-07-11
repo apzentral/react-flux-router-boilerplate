@@ -6,7 +6,7 @@ var DEBUG = false;
 var _name = 'ToDo.jsx';
 var React = require('react');
 var DefaultLayout = React.createFactory(require('../layouts/Default'));
-var ToDoApi = require('../utilities/ToDoApi');
+var ToDoRequestActions = require('../actions/ToDoRequestActions');
 var ToDoStore = require('../stores/ToDoStore');
 var ToDoElement = React.createFactory(require('../components/ToDoElement'));
 
@@ -71,7 +71,7 @@ var ToDo = React.createClass({
     }
     // Pass Validation
     var length = this.state.todo.length;
-    ToDoApi.addNewToDo({
+    ToDoRequestActions.addNewTodo({
       id: length + 1,
       text: text,
       complete: false
@@ -95,7 +95,7 @@ var ToDo = React.createClass({
       console.log('[*] ' + _name + ':componentWillMount ---');
     }
     ToDoStore.addChangeListener(this._toDoChange);
-    ToDoApi.initToDoData();
+    ToDoRequestActions.fetchTodos();
   },
   componentDidMount: function() {
     if (DEBUG) {
